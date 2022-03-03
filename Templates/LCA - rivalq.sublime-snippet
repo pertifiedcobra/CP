@@ -1,0 +1,55 @@
+<snippet>
+  <content><![CDATA[
+const int maxn=200005;
+vector<int> g[maxn+1];
+int p[maxn+1];
+int b_p[maxn+1][21];
+int level[maxn+1];
+int dp[maxn+1][21];
+void dfs(int n,int e,int l){
+     p[n]=e;
+     level[n]=l;
+     for(auto i:g[n]){
+         if(i!=e){
+             dfs(i,n,l+1);
+         }
+     }
+     return;
+}
+void lift(int n){
+     for(int i=0;i<=20;i++){
+         for(int j=1;j<=n;j++){
+             if(i==0)b_p[j][i]=p[j];
+             else b_p[j][i]=b_p[b_p[j][i-1]][i-1];
+         }
+     }
+     return;
+}
+int lca(int u, int v){
+   if(level[v]<level[u])u=v+u-(v=u);
+   int diff=level[u]-level[v];
+   for (int i=20;i >= 0; i--) {
+        if (level[v]-level[u] >=(1 << i)) {
+            v = b_p[v][i];
+        }
+   }
+   if(v==u){
+       return u;
+   }
+   int k=ceil(log2(level[u]));
+   while(k>=0){
+        if(b_p[u][k]!=b_p[v][k]){
+            u=b_p[u][k];
+            v=b_p[v][k];
+        }
+        k--;
+   } 
+   return p[u];
+
+}
+]]></content>
+  <tabTrigger>lca</tabTrigger>
+  <description>lca</description>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope >source.python</scope > -->
+</snippet>

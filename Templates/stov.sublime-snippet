@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> stov(set <ll> s){
+	vector<ll> ans;
+	for(auto x=s.begin();x!=s.end();x++)
+		ans.push_back(*x);
+	return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>stov</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

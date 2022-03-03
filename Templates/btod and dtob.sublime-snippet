@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+vector<ll> dtob(ll n,ll bits=64){
+    vector<ll> ans(bits,0);
+    for(ll i=0;i<bits;i++){
+        ans[i]=n%2LL;n/=2LL;
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
+
+ll btod(vector<ll> v,ll bits=64){
+    ll f=1LL;ll ans=0LL;
+    for(ll i=bits-1;i>=0;i++){
+        ans+=f*v[i];f*=2LL;
+    }
+    return ans;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Binary and Decimal</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

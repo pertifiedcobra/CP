@@ -1,0 +1,82 @@
+<snippet>
+	<content><![CDATA[
+//Useful when base>10^9 or power>10^9
+ll mulmod(ll a,ll b,ll c)
+{ll x=0,y=a%c;while(b>0){if(b%2==1){
+x=(x+y)%c;}y=(y*2LL)%c;b/=2;}return x%c;}
+
+ll binpow(ll a, ll b, ll m) {ll res=1;
+while(b){if(b&1) res=mulmod(res,a,m);
+b>>=1;a=mulmod(a,a,m);}return res;}
+
+//O(sqrt(n))
+bool sqrtisPrime(ll n)
+{
+	for(ll i=2;i*i<=n;i++)
+	{
+		if(n%i==0)
+		return false;
+	}
+	return true;
+}
+
+//O(log(N)) Fermat's Primality Test(has error)
+bool FerisPrime(ll n, ll iterations=15)
+{
+	if(n<=4)
+	return n==2||n==3;
+	vector <ll> pr={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53};
+	for(ll i=0;i<=iterations;i++)
+	{
+		ll a=pr[i];
+		ll res=binpow(a,n-1,n);
+		
+		if(res!=1)
+		return false;
+	}
+	return true;
+}
+
+
+bool check_composite(ll n, ll a, ll d, ll s) {
+    ll x = binpow(a, d, n);
+    if (x == 1 || x == n - 1)
+        return false;
+    for (ll r = 1; r < s; r++) {
+        x = binpow(x,(ll)2,n);
+        if (x == n - 1)
+            return false;
+    }
+    return true;
+};
+//O(Log(N))Miller Robin's PrimalityTest, #Besto Primo Check
+bool MRisPrime(ll n)
+{
+	if(n<2)
+		return false;
+	ll r=0;
+	ll d=n-1;
+	while((d&1)==0){
+		d>>=1;
+		r++;
+	}
+	vector <ll> pr={2,3,5,7,11,13,17,19,23,29,31,37};
+	ll sz=pr.size();
+	if(n<((ll)1<<32))
+		sz=4;
+	for(ll i=0;i<sz;i++)
+	{
+		ll a=pr[i];
+		if(n==a)
+			return true;
+		if(check_composite(n,a,d,r))
+			return false;
+	}
+	return true;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Primality Test</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

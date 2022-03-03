@@ -1,0 +1,63 @@
+<snippet>
+	<content><![CDATA[
+//Extended Euclid Algo
+ll extended_euclidean(ll a, ll b, ll& x, ll& y) {
+    if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    ll x1, y1;
+    ll d = extended_euclidean(b, a % b, x1, y1);
+    x = y1;
+    y = x1 - y1 * (a / b);
+    return d;
+}
+//Binary Exponentiation Power Function
+ll PowI(ll a,ll b,ll m)
+{ll ans=1%m;while(b>0){if(b%2) ans=(((ans%m)*(a%m))%m);
+a=(((a%m)*(a%m))%m); b=(ll)(b/((ll)2));}return ans;}
+
+//If m is prime
+ll inv1(ll n,ll m)
+{
+	//Works only if m is prime
+	if(__gcd(n,m)!=1)
+	return -1;
+	
+	ll inv=PowI(n,m-2,m);
+	return inv;
+}//O(logm)
+
+//For all m
+ll inv2(ll n,ll m)
+{
+	//Works for all m
+	ll x, y;
+	ll g = extended_euclidean(n, m, x, y);
+	if (g != 1) {
+	    return -1;
+	}
+	else {
+	    x = (x % m + m) % m;
+	    return x;
+	}
+}//O(log(max(n, m)))
+
+//Modular Inverse of all numbers from 1 to n(n<m) and m must be prime
+vl mall(ll m,ll n)
+{
+	ll inv(m);
+	inv[1]=0;
+	for(ll i=2;i<m;i++)
+	{
+		inv[i]=m-(m/i)*inv[m%i]%m;
+	}
+	return vl;
+}//O(n)
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ModularInverse</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

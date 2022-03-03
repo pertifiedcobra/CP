@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+void dijkstra(ll sc){
+    dis.clear();dis.assign(n+1,inf);
+    par.clear();par.assign(n+1,-2);
+    multiset<pll> ms;vector<bool> vis(n+1,false);
+    ms.ins({0,sc});dis[sc]=0;par[sc]=-1;
+    while(!ms.empty()){
+        pll pr=*ms.begin();ms.erase(ms.find(pr));
+        ll nd=pr.S;
+        if(vis[nd]) continue;
+        vis[nd]=true;
+        for(auto x:g[nd]){
+            if(dis[x.F]>dis[nd]+x.S){
+                dis[x.F]=dis[nd]+x.S;
+                par[x.F]=nd;
+                ms.ins({dis[x.F],x.F});
+            }
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Dijkstra</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+//Macros required for Ordered-Set
+#include<ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+template <typename T>
+using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+#define ook order_of_key //Finds Index using Number, returns number.
+#define fbo find_by_order //Finds Number using Index, returns pointer.
+//Till here
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Ordered Set</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+ll n;vector<vector<ll>> g;vector<ll> par,stp;
+//g is graph, par is parent, stp is SubTreeParameter.
+
+void dfs(ll nd,ll pp)
+{
+	//Add.
+	stp[nd]=1; //Assign Inital Val to the Subtree Parameter.
+	for(auto v:g[nd])
+	{
+		if(v!=pp)
+		{
+			dfs(v,nd);
+			stp[nd]+=stp[v]; // Update SubTreeParameter.
+			//Add.
+		}
+	}
+	//Check
+}
+//Push dfs(root, parent of root).
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SubTreeParameter</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

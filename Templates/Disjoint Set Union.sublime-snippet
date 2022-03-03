@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[
+struct UnionFind{
+    ll n,set_size,*par,*rank;
+    //Add arrays for parameters needed to be calculated.
+    UnionFind(){}
+    UnionFind(ll a){
+        n=set_size=a;
+        par=new ll[n+1];
+        rank=new ll[n+1];
+        //Initiate the parameters arrays.
+        for(ll i=1;i<=n;++i) par[i]=i,rank[i]=1;}
+    ll find(ll x){
+        if(x==par[x]) return x;
+        return par[x]=find(par[x]);
+    }
+    void merge(ll a,ll b){
+        a=find(a);b=find(b);
+        if(a==b) return;
+        if(rank[a]<rank[b]) swap(a,b);
+        rank[a]+=rank[b];
+        par[b]=a;
+        //Update Parameters.
+        set_size-=1;
+    }
+    vl getans(ll a){//Update the function accordingly.
+        vl ans;
+        /**
+        ans={p1[find(a)],p2[find(a)],.......};
+        Here p1,p2,.... are the parameters
+        that need to be calculated.        **/
+        return ans;
+    }
+    void reset(){
+        set_size=n;for(ll i=1;i<=n;++i) par[i]=i,rank[i]=1;}
+    ll size_(){ return set_size;}
+    void print(){ for(ll i=1;i<=n;++i)
+            cout<<i<<" -> "<<par[i]<<endl;}
+};
+//To build DSU: UnionFind _name(size)
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Disjoint Set Union</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

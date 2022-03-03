@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+ll N;vector <ll> lp,pr;
+void sof(ll N=100000)
+{
+	lp.resize(N+1);
+	for (ll i=2; i<=N; ++i)
+	{
+	    if (lp[i] == 0)
+		{
+	        lp[i] = i;
+	        pr.push_back (i);
+	    }
+	    for (ll j=0; j<(ll)pr.size() && pr[j]<=lp[i] && i*pr[j]<=N; ++j)
+	        lp[i * pr[j]] = pr[j];
+	}
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SeiveofErathosthenes</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

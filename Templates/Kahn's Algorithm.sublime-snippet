@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+vector<vector<ll>> g;vector<ll> id,topo;
+
+/**This gives Lexographically Smallest Topo. Cuz Priority Queue is used.
+ * Vector id is indegree of a node.
+**/
+void kahn(){
+    priority_queue <ll> q;
+    for(ll i=1;i<id.size();i++){
+        if(id[i]==0)
+            q.push(-i);
+    }
+    while(!q.empty()){
+        ll nd=-q.top();
+        topo.push_back(nd);q.pop();
+        for(auto x:g[nd]){
+            id[x]--;
+            if(id[x]==0)
+                q.push(-x);
+        }
+    }
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Kahn's Algorithm</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

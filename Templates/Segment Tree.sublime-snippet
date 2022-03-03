@@ -1,0 +1,77 @@
+<snippet>
+	<content><![CDATA[
+template <typename T>
+struct segtree{
+    int n;
+    // Base Case is 0 for add,gcd,XOR,OR;1 for multiply;
+    // 2^64-1 for AND.
+    // -inf for max;inf for min;etc.
+    T BASE_CASE=0;
+    vector<T> tree;
+    T (*f)(T a,T b);
+    // Constructor
+    segtree(vector<T> &ar){
+        n=ar.size();
+        tree=vector<T>(4*n+1,0);
+        //Associative Func, ex: __gcd(a,b),a*b,a^b,a&b,min,max,etc.
+        f = [](T a,T b)-> T{
+            return a+b;  //Function of Segment Tree
+        };
+        init(ar,1,0,n-1);
+    }
+    segtree(vector<T> &ar, T _bc,T (*mfp)(T a,T b)) {
+        f = mfp;
+        BASE_CASE=_bc;
+        n=ar.size();
+        tree=vector<T>(4*n+1,0);
+        init(ar,1,0,n-1);
+    }
+    T init(vector<T> &ar,int v,int tl,int tr){
+        if (tl == tr)
+            return tree[v] = ar[tl];
+        
+        int tm = (tl + tr) / 2;
+        T a=init(ar, v*2, tl, tm);
+        T b=init(ar, v*2+1, tm+1, tr);
+        return tree[v] = f(a,b);
+    }
+    // Gives value of Func f for range [l,r]
+    // l,r are 0 indexed. Ex: st.ask(l,r)
+    T ask(int l,int r){
+        return _ask(1,0,n-1,l,r);
+    }
+    T _ask(int v,int tl,int tr,int l,int r){
+        if(l>r)
+            return BASE_CASE;
+        if(l==tl&&r==tr)
+            return tree[v];
+        int tm=(tl+tr)/2;
+        T a=_ask(v*2, tl, tm, l, min(r, tm));
+        T b=_ask(v*2+1, tm+1, tr, max(l, tm+1), r);
+        return f(a,b);
+    }
+    // Change the value at index idx to val(0 indexed).
+    void update(int idx, T val){
+        _update(1,0,n-1,idx,val);
+    }
+    void _update(int v,int tl,int tr,int idx,T val){
+        if(tl==tr){
+            tree[v]=val;
+            return;
+        }
+        int tm=(tl+tr)/2;
+        if(idx<=tm)
+            _update(v*2,tl,tm,idx,val);
+        else
+            _update(v*2+1,tm+1,tr,idx,val);
+        tree[v]=f(tree[v*2],tree[v*2+1]);
+    }
+};
+//To build SegTree for vector<ll> v(n),use: segtree<ll> st(v);
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Segment Tree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

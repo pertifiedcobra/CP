@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[
+ll N;vector <ll> lp,pr;
+void sof(ll N=1e5+5){
+    lp.resize(N+1);
+    for (ll i=2; i<=N; ++i){
+        if (lp[i] == 0){
+            lp[i] = i;
+            pr.push_back (i);
+        }
+        for (ll j=0; j<(ll)pr.size() && pr[j]<=lp[i] && i*pr[j]<=N; ++j)
+            lp[i * pr[j]] = pr[j];
+    }
+}
+
+vector<ll> PF(ll n){
+    vector<ll> f;ll N=n;ll i;
+    map <ll,ll> fac;
+    for(i=0;i<pr.size() and n>1 and pr[i]*pr[i]<=N;i++){
+        while(n%pr[i]==0){
+            f.push_back(pr[i]);fac[pr[i]]++;
+            n/=pr[i];
+        }
+    }
+    if(n>1){
+        f.push_back(n);fac[n]++;
+        n/=n;
+    }
+    return f;
+}
+
+vector<ll> NF(ll n){
+    vector<ll> f;ll i;
+    for(i=1;i*i<=n;i++){
+        if(n%i==0){
+            f.push_back(i);
+            if(i!=n/i)
+                f.push_back(n/i);
+        }
+    }
+    sort(f.begin(),f.end());
+    return f;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Factorisation</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

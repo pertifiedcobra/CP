@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+map<char,pll> dir={{'R',{0,1}},{'L',{0,-1}},{'U',{-1,0}},{'D',{1,0}}};
+vl dx={0,1,0,-1},dy={1,0,-1,0};
+
+bool check(ll x,ll y){
+    if(x<n and x>=0 and y<m and y>=0)
+        return true;
+    return false;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Directions</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

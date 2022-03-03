@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+void vpri(vector<ll> v){
+	for(ll i=0;i<v.size();i++)
+		cout<<v[i]<<" ";
+	cout<<el;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>vpri</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

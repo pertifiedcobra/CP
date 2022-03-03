@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+void bfs(ll node,ll n){
+	dis.clear();dis.assign(n+1,large);
+	par.clear();par.assign(n+1,-1);
+	dis[node]=0;par[node]=-69;
+	queue <ll> q;
+	q.push(node);
+	while(!q.empty()){
+		ll nd=q.front();
+		q.pop();
+		for(ll x:g[nd]){
+			if(dis[x]>dis[nd]+1){
+				dis[x]=dis[nd]+1;
+				par[x]=nd;
+				q.push(x);
+			}
+		}
+	}
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BFS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

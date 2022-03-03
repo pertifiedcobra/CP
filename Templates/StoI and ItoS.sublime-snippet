@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[
+ll strtoi(string s)
+{
+    ll x=0;
+    for(ll i=0;i<(ll)s.size();i++)
+    x=x*10+(s[i]-'0');
+    return x;
+}
+
+string itos(ll x)
+{
+    string s;
+    ll y = x;
+    while(y>0)
+    {
+        int z = y%10;
+        s=s+(char)(z+'0');
+        y/=10;
+    }
+    reverse(s.begin(),s.end());
+    return s;
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>StoI and ItoS</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

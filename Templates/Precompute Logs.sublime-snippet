@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+vl logs;
+void computeLogs(ll n=1e6){
+    logs.resize(n+1,0);
+    for(int i=2;i<=n;i++){
+        logs[i]=logs[i/2]+1;}
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Precompute Logs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

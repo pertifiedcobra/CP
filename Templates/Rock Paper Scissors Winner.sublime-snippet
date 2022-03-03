@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+char win(char c1,char c2)
+{
+	if(c1==c2) return 'D';
+	else if(c1=='R')
+	{
+		if(c2=='P') return c2;
+		else if(c2=='S') return c1;
+	}
+	else if(c1=='S')
+	{
+		if(c2=='P') return c1;
+		else return c2;
+	}
+	else if(c1=='P')
+	{
+		if(c2=='S') return c2;
+		else return c1;
+	}
+}
+// D=Draw,R=Rock,P=Paper,S=Scissor
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Rock Paper Scissors Winner</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

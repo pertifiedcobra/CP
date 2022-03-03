@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+ll OddCount(ll L, ll R){
+    ll N=(R-L)/2LL;
+    if (R%2!=0 || L%2!=0)
+        N+=1;
+    return N;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>OddCount</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+//Counts number of blocks of 0s and 1s in the string.
+ll bc(string s,ll zo) //s is the binary string, zo is 0 or 1.
+{
+	ll ans=1;ll sz=s.size();
+	ll c1,c0;
+	for(ll i=0;i<sz-1;i++){
+		if(s[i]!=s[i+1]){
+			ans++;
+		}
+	}
+	if(s[0]=='1') c1=((ans+1)/2);
+	else c1=((ans)/2);
+	c0=ans-c1;
+	return ((zo==0)?c0:c1);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BlockCount</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

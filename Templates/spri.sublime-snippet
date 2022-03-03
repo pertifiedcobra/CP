@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+void spri(set <ll> s){
+	for(auto x=s.begin();x!=s.end();x++)
+		cout<<*x<<" ";
+	cout<<endl;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>spri</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+#define Dbg(x)     cout<<#x<<":\n"<<x;
+
+mt19937 rng (chrono::high_resolution_clock::now().time_since_epoch().count());
+template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << " "; string sep; for (const T &x : v) os << sep << x, sep = " "; return os << "\n"; }
+template <typename A> ostream& operator<< (ostream &cout, vector<A> const &v) {cout << " "; for(ll i = 0; i < v.size(); i++) {if (i) cout << " "; cout << v[i];} return cout << "\n";}
+template <typename A, typename B> istream& operator>> (istream& cin, pair<A, B> &p) {cin >> p.first; return cin >> p.second;}
+template <typename A> istream& operator>> (istream& cin, vector<A> &x){for(ll i = 0; i < x.size()-1; i++) cin >> x[i]; return cin >> x[x.size()-1];}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Debug</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
